@@ -3,6 +3,7 @@
 
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
+            <Name>SFTP</Name>
             <ExtensionElements>
                 <ifl:property>
                     <key>disconnect</key>
