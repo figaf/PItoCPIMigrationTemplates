@@ -111,7 +111,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>httpAddressWithoutQuery</key>
-                    <value>https://{{HOST}}<xsl:value-of select="AdapterSpecificAttribute[Name='path']/Value"/>"</value>
+                    <value>https://{{HOST}}<xsl:value-of select="AdapterSpecificAttribute[Name='path']/Value"/></value>
                 </ifl:property>
 
             </ExtensionElements>
