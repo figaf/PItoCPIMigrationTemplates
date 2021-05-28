@@ -140,10 +140,10 @@
             </ExtensionElements>
             <ExternalProperties>
                 <item>
-                <name>FTP_PASSWORD</name>
-                <value>APPMEMBERSITE_USER</value>
+                    <name>FTP_PASSWORD</name>
+                    <value>APPMEMBERSITE_USER</value>
 
-            </item>
+                </item>
                 <item>
                     <name>FTP_HOST</name>
                     <value><xsl:value-of select="//AdapterSpecificAttribute[Name='ftp.host']/Value"></xsl:value-of></value>
