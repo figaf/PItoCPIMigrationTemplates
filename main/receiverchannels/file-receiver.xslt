@@ -37,10 +37,10 @@
                     <key>autoCreate</key>
                     <value>1</value>
                 </ifl:property>
-                <ifl:property>
+                <!-- <ifl:property>
                     <key>location_id</key>
                     <value>{{GATEWAY}}</value>
-                </ifl:property>
+                </ifl:property> -->
                 <ifl:property>
                     <key>Name</key>
                     <value>FTP</value>
@@ -71,7 +71,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>encryption</key>
-                    <value>ftpes</value>
+                    <value>ftp</value>
                 </ifl:property>
                 <ifl:property>
                     <key>host</key>
@@ -107,7 +107,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>proxyType</key>
-                    <value>sapcc</value>
+                    <value>none</value>
                 </ifl:property>
                 <ifl:property>
                     <key>componentVersion</key>
