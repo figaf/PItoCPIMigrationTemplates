@@ -1,6 +1,5 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:ns2="http://sap.com/xi/BASIS" xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" >
     <xsl:output indent="yes"/>
-
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
             <Name>HTTP</Name>
@@ -113,26 +112,16 @@
                     <key>httpAddressWithoutQuery</key>
                     <value>https://{{HOST}}<xsl:value-of select="AdapterSpecificAttribute[Name='path']/Value"/></value>
                 </ifl:property>
-
             </ExtensionElements>
             <ExternalProperties>
                 <item>
                     <name>HOST</name>
                     <value><xsl:value-of select="AdapterSpecificAttribute[Name='host']/Value"/></value>
                 </item>
-
             </ExternalProperties>
             <Notifcations>
                 <Warning>Add User crdentials</Warning>
             </Notifcations>
-
-
-
         </figaf:Block>
-
-
-
     </xsl:template>
-
-
 </xsl:stylesheet>

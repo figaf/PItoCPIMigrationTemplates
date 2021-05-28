@@ -1,6 +1,6 @@
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:ns2="http://sap.com/xi/BASIS" xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" >
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns2="http://sap.com/xi/BASIS"
+                xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd">
     <xsl:output indent="yes"/>
-
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
             <Name>FTP</Name>
@@ -11,7 +11,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>fileName</key>
-                    <value>{{FTP_FILENAME}}</value>
+                    <value>{{filename}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>Description</key>
@@ -67,7 +67,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>path</key>
-                    <value>{{FTP_DIRECTORY}}</value>
+                    <value>{{DEST_DIRECTORY}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>encryption</key>
@@ -75,7 +75,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>host</key>
-                    <value>{{FTP_HOST}}</value>
+                    <value>{{ERPHOST}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>connectTimeout</key>
@@ -103,7 +103,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>credential_name</key>
-                    <value>{{FTP_PASSWORD}}</value>
+                    <value>{{SFTP_PASSWORD}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>proxyType</key>
@@ -131,7 +131,8 @@
                 </ifl:property>
                 <ifl:property>
                     <key>cmdVariantUri</key>
-                    <value>ctype::AdapterVariant/cname::sap:FTP/tp::FTP/mp::File/direction::Receiver/version::1.1.0</value>
+                    <value>ctype::AdapterVariant/cname::sap:FTP/tp::FTP/mp::File/direction::Receiver/version::1.1.0
+                    </value>
                 </ifl:property>
                 <ifl:property>
                     <key>MessageProtocolVersion</key>
@@ -140,24 +141,34 @@
             </ExtensionElements>
             <ExternalProperties>
                 <item>
-                <name>FTP_PASSWORD</name>
-                <value>APPMEMBERSITE_USER</value>
-            </item>
-                <item>
-                    <name>FTP_HOST</name>
-                    <value><xsl:value-of select="//AdapterSpecificAttribute[Name='ftp.host']/Value"></xsl:value-of></value>
+                    <name>GATEWAY</name>
+                    <value>sapserv02</value>
                 </item>
                 <item>
-                    <name>FTP_DIRECTORY</name>
-                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='ftp.targetDir']/Value"/></value>
+                    <name>SALES_HOST</name>
+                    <value>figaf.com</value>
                 </item>
                 <item>
-                    <name>FTP_FILENAME</name>
-                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='file.targetFileName']/Value"/></value>
+                    <name>DEST_DIRECTORY</name>
+                    <value>
+                        <xsl:value-of select="AdapterSpecificAttribute[Name='file.targetDir']/Value"/>
+                    </value>
+                </item>
+                <item>
+                    <name>filename</name>
+                    <value>*.xml</value>
+                </item>
+                <item>
+                    <name>ERPHOST</name>
+                    <value>sapserv02</value>
+                </item>
+                <item>
+                    <name>SFTP_PASSWORD</name>
+                    <value>SAP_serv02user</value>
                 </item>
             </ExternalProperties>
             <Notifcations>
-                <Warning>Check FTP username</Warning>
+                <Warning>Add SFTP host to the file incl properties</Warning>
             </Notifcations>
         </figaf:Block>
     </xsl:template>
