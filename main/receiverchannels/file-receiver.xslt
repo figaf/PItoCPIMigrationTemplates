@@ -11,7 +11,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>fileName</key>
-                    <value>{{filename}}</value>
+                    <value>{{FTP_FILENAME}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>Description</key>
@@ -67,7 +67,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>path</key>
-                    <value>{{DEST_DIRECTORY}}</value>
+                    <value>{{FTP_DIRECTORY}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>encryption</key>
@@ -75,7 +75,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>host</key>
-                    <value>{{ERPHOST}}</value>
+                    <value>{{FTP_HOST}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>connectTimeout</key>
@@ -103,7 +103,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>credential_name</key>
-                    <value>{{SFTP_PASSWORD}}</value>
+                    <value>{{FTP_PASSWORD}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>proxyType</key>
@@ -140,24 +140,24 @@
             </ExtensionElements>
             <ExternalProperties>
                 <item>
-                <name>GATEWAY</name>
-                <value>sapserv02</value>
+                <name>FTP_PASSWORD</name>
+                <value>APPMEMBERSITE_USER</value>
             </item>
                 <item>
-                    <name>SALES_HOST</name>
-                    <value>figaf.com</value>
+                    <name>FTP_HOST</name>
+                    <value><xsl:value-of select="//AdapterSpecificAttribute[Name='ftp.host']/Value"></xsl:value-of></value>
                 </item>
                 <item>
-                    <name>DIRECTORY</name>
-                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='file.targetDir']/Value"/></value>
+                    <name>FTP_DIRECTORY</name>
+                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='ftp.targetDir']/Value"/></value>
                 </item>
                 <item>
-                    <name>filename</name>
-                    <value>figaf.com</value>
+                    <name>FTP_FILENAME</name>
+                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='file.targetFileName']/Value"/></value>
                 </item>
             </ExternalProperties>
             <Notifcations>
-                <Warning>Add SFTP host to the file incl properties</Warning>
+                <Warning>Check FTP username</Warning>
             </Notifcations>
         </figaf:Block>
     </xsl:template>
