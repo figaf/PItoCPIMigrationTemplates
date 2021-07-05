@@ -90,9 +90,9 @@
             <ExternalProperties>
 
             </ExternalProperties>
-            <Notifcations>
-                <Warning>Update the HTTP endpoint</Warning>
-            </Notifcations>
+            <Notifications>
+                <ManualActionRequired>Update the HTTP endpoint</ManualActionRequired>
+            </Notifications>
 
 
 

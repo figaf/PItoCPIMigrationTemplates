@@ -122,9 +122,9 @@
                 </item>
 
             </ExternalProperties>
-            <Notifcations>
-                <Warning>Add User crdentials</Warning>
-            </Notifcations>
+            <Notifications>
+                <ManualActionRequired>Add User crdentials</ManualActionRequired>
+            </Notifications>
 
 
 

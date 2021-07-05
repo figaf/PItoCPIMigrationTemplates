@@ -191,9 +191,9 @@
                     <value>*.xml</value>
                 </item>
             </ExternalProperties>
-            <Notifcations>
-                <Warning>Add SFTP host to the file incl properties</Warning>
-            </Notifcations>
+            <Notifications>
+                <ManualActionRequired>Add SFTP host to the file incl properties</ManualActionRequired>
+            </Notifications>
         </figaf:Block>
     </xsl:template>
 </xsl:stylesheet>

@@ -18,9 +18,12 @@
                 </item>
 
             </ExternalProperties>
-            <Notifcations>
-                <Warning></Warning>
-            </Notifcations>
+            <Notifications>
+                <ManualActionRequired>Message1</ManualActionRequired>
+                <Warning>Message2</Warning>
+                <Advice>Message3</Advice>
+                <Information>Message4</Information>
+            </Notifications>
 
 
 

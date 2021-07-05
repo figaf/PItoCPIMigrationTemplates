@@ -157,9 +157,9 @@
                     <value><xsl:value-of select="AdapterSpecificAttribute[Name='file.targetFileName']/Value"/></value>
                 </item>
             </ExternalProperties>
-            <Notifcations>
-                <Warning>Check FTP username</Warning>
-            </Notifcations>
+            <Notifications>
+                <Advice>Check FTP username</Advice>
+            </Notifications>
         </figaf:Block>
     </xsl:template>
 </xsl:stylesheet>
