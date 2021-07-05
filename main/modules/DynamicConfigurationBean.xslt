@@ -82,9 +82,7 @@
                 </item>
 
             </ExternalProperties>
-            <Notifcations>
-                <Warning></Warning>
-            </Notifcations>
+            <Notifications></Notifications>
 
 
         </figaf:Block>
