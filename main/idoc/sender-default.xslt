@@ -43,7 +43,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>system</key>
-                    <value><xsl:value-of select="/ns2:CommunicationChannel/CommunicationChannelID/ComponentID"></value>
+                    <value><xsl:value-of select="/ns2:CommunicationChannel/CommunicationChannelID/ComponentID"/></value>
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocol</key>
