@@ -119,9 +119,9 @@
                     <value><xsl:value-of select="AdapterSpecificAttribute[Name='host']/Value"/></value>
                 </item>
             </ExternalProperties>
-            <Notifcations>
-                <Warning>Add User crdentials</Warning>
-            </Notifcations>
+            <Notifications>
+                <ManualActionRequired>Add User crdentials</ManualActionRequired>
+            </Notifications>
         </figaf:Block>
     </xsl:template>
 </xsl:stylesheet>

@@ -43,7 +43,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>system</key>
-                    <value><xsl:value-of select="/ns2:CommunicationChannel/CommunicationChannelID/ComponentID"></value>
+                    <value><xsl:value-of select="/ns2:CommunicationChannel/CommunicationChannelID/ComponentID"/></value>
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocol</key>
@@ -74,9 +74,9 @@
             <ExternalProperties>
 
             </ExternalProperties>
-            <Notifcations>
-                <Warning>Enter Process Direct URL</Warning>
-            </Notifcations>
+            <Notifications>
+                <ManualActionRequired>Enter Process Direct URL</ManualActionRequired>
+            </Notifications>
 
 
 
