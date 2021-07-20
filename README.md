@@ -1,4 +1,4 @@
-# PItoCPIMigrationTemplates
+# PI to CPI Migration Templates
 This repository contains xslt mapping files for PI to CPI migration in the [Figaf DevOps Tool](https://figaf.com/figaf-devops-tool/). There is a free trial that allows you to get started. 
 
 ## Structure 
