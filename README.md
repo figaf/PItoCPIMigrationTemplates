@@ -19,10 +19,12 @@ main
 
 ## Getting started
 
-1. Clone this repository
-    ```
-    git clone https://github.com/figaf/PItoCPIMigrationTemplates.git
-    ```
+1. Get this repository using one of the following flows:
+   - Download [ZIP archive](https://github.com/figaf/PItoCPIMigrationTemplates/archive/refs/heads/master.zip) and unzip it to `PItoCPIMigrationTemplates` folder.
+   - Clone this repository
+   ```
+   git clone https://github.com/figaf/PItoCPIMigrationTemplates.git
+   ```
 2. Download IRT jar file from https://irt.figaf.com/download.
 3. Run IRT application with parameter `irt.config.pi-to-cpi-migration-templates` set to `PItoCPIMigrationTemplates\main`.
 
