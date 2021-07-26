@@ -20,7 +20,7 @@ main
 ## Getting started
 
 1. Get this repository using one of the following flows:
-   - Download ZIP archive and unzip it to `PItoCPIMigrationTemplates` folder.
+   - Download [ZIP archive](https://github.com/figaf/PItoCPIMigrationTemplates/archive/refs/heads/master.zip) and unzip it to `PItoCPIMigrationTemplates` folder.
    - Clone this repository
    ```
    git clone https://github.com/figaf/PItoCPIMigrationTemplates.git
