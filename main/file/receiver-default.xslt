@@ -141,12 +141,12 @@
             <ExternalProperties>
                 <item>
                     <name>FTP_PASSWORD</name>
-                    <value>APPMEMBERSITE_USER</value>
+                    <value><xsl:value-of select="CommunicationChannelID/ComponentID"/>_USER</value>
 
                 </item>
                 <item>
                     <name>FTP_HOST</name>
-                    <value><xsl:value-of select="//AdapterSpecificAttribute[Name='ftp.host']/Value"></xsl:value-of></value>
+                    <value><xsl:value-of select="//AdapterSpecificAttribute[Name='ftp.host']/Value"/></value>
                 </item>
                 <item>
                     <name>FTP_DIRECTORY</name>
@@ -158,7 +158,7 @@
                 </item>
             </ExternalProperties>
             <Notifications>
-                <Advice>Check FTP username</Advice>
+                <Advice>Check FTP username <xsl:value-of select="CommunicationChannelID/ComponentID"/>_USER</Advice>
             </Notifications>
         </figaf:Block>
     </xsl:template>
