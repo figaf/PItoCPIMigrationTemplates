@@ -123,7 +123,7 @@
 
             </ExternalProperties>
             <Notifications>
-                <ManualActionRequired>Add User crdentials</ManualActionRequired>
+                <ManualActionRequired>Add User credentials</ManualActionRequired>
             </Notifications>
 
 
