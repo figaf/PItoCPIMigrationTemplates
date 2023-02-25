@@ -91,7 +91,7 @@
 
             </ExternalProperties>
             <Notifications>
-                <ManualActionRequired>Update the HTTP endpoint</ManualActionRequired>
+
             </Notifications>
 
 
