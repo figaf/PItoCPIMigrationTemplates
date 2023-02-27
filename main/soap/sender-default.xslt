@@ -171,9 +171,7 @@
 
             </ExternalProperties>
             <Notifications>
-                <ManualActionRequired>Update the SOAP endpoint</ManualActionRequired>
-				
-		
+
             </Notifications>
 
 

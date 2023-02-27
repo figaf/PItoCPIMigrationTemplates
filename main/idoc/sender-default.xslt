@@ -75,7 +75,7 @@
 
             </ExternalProperties>
             <Notifications>
-                <ManualActionRequired>Enter Process Direct URL</ManualActionRequired>
+
             </Notifications>
 
 
