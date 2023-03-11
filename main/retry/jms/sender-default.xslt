@@ -56,7 +56,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>QueueName_inbound</key>
-                    <value>{{iflowTechnicalName}}</value>
+                    <value>{{jmsQueueName}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocol</key>
@@ -89,8 +89,8 @@
             </ExtensionElements>
            <ExternalProperties>
                 <item>
-                    <name>iflowTechnicalName</name>
-                    <value>#iflowTechnicalName#</value>
+                    <name>jmsQueueName</name>
+                    <value>#jmsQueueName#</value>
                 </item>
             </ExternalProperties>
             <Notifications>
