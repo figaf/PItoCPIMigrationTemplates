@@ -3,39 +3,39 @@
 
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
-            <Name>HTTP</Name>
+            <Name>IDOC</Name>
             <ExtensionElements>
                 <ifl:property>
                     <key>ComponentType</key>
-                    <value>HTTPS</value>
+                    <value>ProcessDirect</value>
                 </ifl:property>
                 <ifl:property>
                     <key>Description</key>
                     <value/>
                 </ifl:property>
                 <ifl:property>
-                    <key>maximumBodySize</key>
-                    <value>40</value>
+                    <key>address</key>
+                    <value>/FILLMEINN</value>
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentNS</key>
                     <value>sap</value>
                 </ifl:property>
                 <ifl:property>
-                    <key>componentVersion</key>
-                    <value>1.4</value>
+                    <key>Vendor</key>
+                    <value>SAP</value>
                 </ifl:property>
                 <ifl:property>
-                    <key>urlPath</key>
-                    <value>/generatedurl</value>
+                    <key>componentVersion</key>
+                    <value>1.1</value>
                 </ifl:property>
                 <ifl:property>
                     <key>Name</key>
-                    <value>HTTPS</value>
+                    <value>ProcessDirect</value>
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocolVersion</key>
-                    <value>1.4.1</value>
+                    <value>1.1.2</value>
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentSWCVName</key>
@@ -43,47 +43,31 @@
                 </ifl:property>
                 <ifl:property>
                     <key>system</key>
-                    <value>Sender</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>xsrfProtection</key>
-                    <value>0</value>
+                    <value><xsl:value-of select="/ns2:CommunicationChannel/CommunicationChannelID/ComponentID"/></value>
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocol</key>
-                    <value>HTTPS</value>
+                    <value>Not Applicable</value>
                 </ifl:property>
                 <ifl:property>
                     <key>cmdVariantUri</key>
-                    <value>ctype::AdapterVariant/cname::sap:HTTPS/tp::HTTPS/mp::None/direction::Sender/version::1.4.1</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>userRole</key>
-                    <value>ESBMessaging.send</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>senderAuthType</key>
-                    <value>RoleBased</value>
+                    <value>ctype::AdapterVariant/cname::ProcessDirect/vendor::SAP/tp::Not Applicable/mp::Not Applicable/direction::Sender/version::1.1.2</value>
                 </ifl:property>
                 <ifl:property>
                     <key>MessageProtocol</key>
-                    <value>None</value>
+                    <value>Not Applicable</value>
                 </ifl:property>
                 <ifl:property>
                     <key>MessageProtocolVersion</key>
-                    <value>1.4.1</value>
+                    <value>1.1.2</value>
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentSWCVId</key>
-                    <value>1.4.1</value>
+                    <value>1.1.2</value>
                 </ifl:property>
                 <ifl:property>
                     <key>direction</key>
                     <value>Sender</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>clientCertificates</key>
-                    <value/>
                 </ifl:property>
 
             </ExtensionElements>
