@@ -1,41 +1,36 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:ns2="http://sap.com/xi/BASIS" xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" >
     <xsl:output indent="yes"/>
-
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
-            <Name>HTTP</Name>
+            <Name>RFC</Name>
             <ExtensionElements>
-                <ifl:property>
+       <ifl:property>
                     <key>ComponentType</key>
-                    <value>HTTPS</value>
+                    <value>RFC</value>
                 </ifl:property>
                 <ifl:property>
                     <key>Description</key>
-                    <value/>
-                </ifl:property>
-                <ifl:property>
-                    <key>maximumBodySize</key>
-                    <value>40</value>
+                    <value />
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentNS</key>
                     <value>sap</value>
                 </ifl:property>
                 <ifl:property>
-                    <key>componentVersion</key>
-                    <value>1.4</value>
+                    <key>destination</key>
+                    <value>{{SAP_RFC}}</value>
                 </ifl:property>
                 <ifl:property>
-                    <key>urlPath</key>
-                    <value>/generatedurl</value>
+                    <key>componentVersion</key>
+                    <value>1.2</value>
                 </ifl:property>
                 <ifl:property>
                     <key>Name</key>
-                    <value>HTTPS</value>
+                    <value>RFC</value>
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocolVersion</key>
-                    <value>1.4.1</value>
+                    <value>1.2.1</value>
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentSWCVName</key>
@@ -43,64 +38,50 @@
                 </ifl:property>
                 <ifl:property>
                     <key>system</key>
-                    <value>Sender</value>
+                    <value>Receiver</value>
                 </ifl:property>
                 <ifl:property>
-                    <key>xsrfProtection</key>
+                    <key>transactioncommit</key>
+                    <value>0</value>
+                </ifl:property>
+                <ifl:property>
+                    <key>newConnection</key>
                     <value>0</value>
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocol</key>
-                    <value>HTTPS</value>
+                    <value>RFC</value>
                 </ifl:property>
                 <ifl:property>
                     <key>cmdVariantUri</key>
-                    <value>ctype::AdapterVariant/cname::sap:HTTPS/tp::HTTPS/mp::None/direction::Sender/version::1.4.1</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>userRole</key>
-                    <value>ESBMessaging.send</value>
-                </ifl:property>
-                <ifl:property>
-                    <key>senderAuthType</key>
-                    <value>RoleBased</value>
+                    <value>ctype::AdapterVariant/cname::sap:RFC/tp::RFC/mp::Synchronous RFC/direction::Receiver/version::1.2.1</value>
                 </ifl:property>
                 <ifl:property>
                     <key>MessageProtocol</key>
-                    <value>None</value>
+                    <value>Synchronous RFC</value>
                 </ifl:property>
                 <ifl:property>
                     <key>MessageProtocolVersion</key>
-                    <value>1.4.1</value>
+                    <value>1.2.1</value>
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentSWCVId</key>
-                    <value>1.4.1</value>
+                    <value>1.2.1</value>
                 </ifl:property>
                 <ifl:property>
                     <key>direction</key>
-                    <value>Sender</value>
+                    <value>Receiver</value>
                 </ifl:property>
-                <ifl:property>
-                    <key>clientCertificates</key>
-                    <value/>
-                </ifl:property>
-
             </ExtensionElements>
             <ExternalProperties>
-
+                <item>
+                    <name>SAP_RFC</name>
+                    <value>RFCDESTINATION</value>
+                </item>
             </ExternalProperties>
             <Notifications>
-
+                <ManualActionRequired>Create or update RFCDESTINATION</ManualActionRequired>
             </Notifications>
-
-
-
         </figaf:Block>
-
-
-
     </xsl:template>
-
-
 </xsl:stylesheet>
