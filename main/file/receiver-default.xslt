@@ -1,9 +1,14 @@
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:ns2="http://sap.com/xi/BASIS" xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" >
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" xmlns:ns2="http://sap.com/xi/BASIS" version="2.0">
     <xsl:output indent="yes"/>
+
+    <xsl:param name="iflowTechnicalName"/>
+    <xsl:param name="iflowDisplayedName"/>
+    <xsl:param name="packageTechnicalName"/>
+    <xsl:param name="packageDisplayedName"/>
 
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
-            <Name>FTP</Name>
+            <Name>SFTP</Name>
             <ExtensionElements>
                 <ifl:property>
                     <key>disconnect</key>
@@ -11,7 +16,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>fileName</key>
-                    <value>{{FTP_FILENAME}}</value>
+                    <value>{{target_filename}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>Description</key>
@@ -23,11 +28,11 @@
                 </ifl:property>
                 <ifl:property>
                     <key>stepwise</key>
-                    <value>0</value>
+                    <value>1</value>
                 </ifl:property>
                 <ifl:property>
                     <key>fileExist</key>
-                    <value>Override</value>
+                    <value>Ignore</value>
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentNS</key>
@@ -37,17 +42,17 @@
                     <key>autoCreate</key>
                     <value>1</value>
                 </ifl:property>
-                <!-- <ifl:property>
+                <ifl:property>
                     <key>location_id</key>
-                    <value>{{GATEWAY}}</value>
-                </ifl:property> -->
+                    <value>{{location_id}}</value>
+                </ifl:property>
                 <ifl:property>
                     <key>Name</key>
                     <value>FTP</value>
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocolVersion</key>
-                    <value>1.1.0</value>
+                    <value>1.2.0</value>
                 </ifl:property>
                 <ifl:property>
                     <key>flatten</key>
@@ -55,11 +60,11 @@
                 </ifl:property>
                 <ifl:property>
                     <key>sftpSecEnabled</key>
-                    <value>1</value>
+                    <value>0</value>
                 </ifl:property>
                 <ifl:property>
                     <key>useTempFile</key>
-                    <value>0</value>
+                    <value>1</value>
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentSWCVName</key>
@@ -67,15 +72,15 @@
                 </ifl:property>
                 <ifl:property>
                     <key>path</key>
-                    <value>{{FTP_DIRECTORY}}</value>
+                    <value>{{target_directory}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>encryption</key>
-                    <value>ftp</value>
+                    <value>ftpes</value>
                 </ifl:property>
                 <ifl:property>
                     <key>host</key>
-                    <value>{{FTP_HOST}}</value>
+                    <value>{{ftp_host}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>connectTimeout</key>
@@ -87,7 +92,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentSWCVId</key>
-                    <value>1.1.0</value>
+                    <value>1.2.0</value>
                 </ifl:property>
                 <ifl:property>
                     <key>direction</key>
@@ -99,15 +104,15 @@
                 </ifl:property>
                 <ifl:property>
                     <key>fileAppendTimeStamp</key>
-                    <value>0</value>
+                    <value>1</value>
                 </ifl:property>
                 <ifl:property>
                     <key>credential_name</key>
-                    <value>{{FTP_PASSWORD}}</value>
+                    <value>{{ftp_sapuser}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>proxyType</key>
-                    <value>none</value>
+                    <value>{{connectiontype}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>componentVersion</key>
@@ -131,33 +136,43 @@
                 </ifl:property>
                 <ifl:property>
                     <key>cmdVariantUri</key>
-                    <value>ctype::AdapterVariant/cname::sap:FTP/tp::FTP/mp::File/direction::Receiver/version::1.1.0</value>
+                    <value>ctype::AdapterVariant/cname::sap:FTP/tp::FTP/mp::File/direction::Receiver/version::1.1.4</value>
                 </ifl:property>
                 <ifl:property>
                     <key>MessageProtocolVersion</key>
-                    <value>1.1.0</value>
+                    <value>1.2.0</value>
                 </ifl:property>
             </ExtensionElements>
             <ExternalProperties>
+                <!-- If you want to select content from the Channel, you can use an XPath like this:-->
+                <!-- <xsl:value-of select="AdapterSpecificAttribute[Name='host']/Value"/>-->
                 <item>
-                    <name>FTP_PASSWORD</name>
-                    <value><xsl:value-of select="CommunicationChannelID/ComponentID"/>_USER</value>
-
-                </item>
-                <item>
-                    <name>FTP_HOST</name>
-                    <value><xsl:value-of select="//AdapterSpecificAttribute[Name='ftp.host']/Value"/></value>
-                </item>
-                <item>
-                    <name>FTP_DIRECTORY</name>
-                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='ftp.targetDir']/Value"/></value>
-                </item>
-                <item>
-                    <name>FTP_FILENAME</name>
+                    <name>target_filename</name>
                     <value><xsl:value-of select="AdapterSpecificAttribute[Name='file.targetFileName']/Value"/></value>
+                </item>
+                <item>
+                    <name>location_id</name>
+                    <value></value>
+                </item>
+                <item>
+                    <name>target_directory</name>
+                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='file.targetDir' or Name='ftp.targetDir']/Value"/></value>
+                </item>
+                <item>
+                    <name>ftp_host</name>
+                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='ftp.host']/Value"/>:<xsl:value-of select="AdapterSpecificAttribute[Name='ftp.port']/Value"/></value>
+                </item>
+                <item>
+                    <name>ftp_sapuser</name>
+                    <value><xsl:value-of select="CommunicationChannelID/ComponentID"/>_USER</value>
+                </item>
+                <item>
+                    <name>connectiontype</name>
+                    <value>sapcc</value>
                 </item>
             </ExternalProperties>
             <Notifications>
+                <ManualActionRequired>Check FTPS connection and cloud connector settings</ManualActionRequired>
                 <Advice>Check FTP username <xsl:value-of select="CommunicationChannelID/ComponentID"/>_USER</Advice>
             </Notifications>
         </figaf:Block>

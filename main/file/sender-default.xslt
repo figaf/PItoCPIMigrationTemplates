@@ -1,7 +1,11 @@
-<xsl:stylesheet version="2.0"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns2="http://sap.com/xi/BASIS"
-                xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" xmlns:ns2="http://sap.com/xi/BASIS" version="2.0">
     <xsl:output indent="yes"/>
+
+    <xsl:param name="iflowTechnicalName"/>
+    <xsl:param name="iflowDisplayedName"/>
+    <xsl:param name="packageTechnicalName"/>
+    <xsl:param name="packageDisplayedName"/>
+
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
             <Name>SFTP</Name>
@@ -12,7 +16,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>fileName</key>
-                    <value>{{filename}}</value>
+                    <value>{{source_filename}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>Description</key>
@@ -32,7 +36,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>location_id</key>
-                    <value>{{GATEWAY}}</value>
+                    <value>{{location_id}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>recursive</key>
@@ -44,7 +48,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocolVersion</key>
-                    <value>1.1.0</value>
+                    <value>1.2.0</value>
                 </ifl:property>
                 <ifl:property>
                     <key>flatten</key>
@@ -56,11 +60,11 @@
                 </ifl:property>
                 <ifl:property>
                     <key>path</key>
-                    <value>{{DIRECTORY}}</value>
+                    <value>{{source_directory}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>noop</key>
-                    <value>test</value>
+                    <value>delete</value>
                 </ifl:property>
                 <ifl:property>
                     <key>encryption</key>
@@ -76,7 +80,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>host</key>
-                    <value>{{ERPHOST}}</value>
+                    <value>{{ftp_host}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>connectTimeout</key>
@@ -84,7 +88,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>file_sorting_criteria</key>
-                    <value>sort_by_none</value>
+                    <value>sort_by_filename</value>
                 </ifl:property>
                 <ifl:property>
                     <key>maxMessagesPerPoll</key>
@@ -96,7 +100,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentSWCVId</key>
-                    <value>1.1.0</value>
+                    <value>1.2.0</value>
                 </ifl:property>
                 <ifl:property>
                     <key>direction</key>
@@ -112,11 +116,11 @@
                 </ifl:property>
                 <ifl:property>
                     <key>credential_name</key>
-                    <value>{{SFTP_PASSWORD}}</value>
+                    <value>{{ftp_sapuser}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>readLock</key>
-                    <value>none</value>
+                    <value>rename</value>
                 </ifl:property>
                 <ifl:property>
                     <key>idempotentRepository</key>
@@ -124,11 +128,11 @@
                 </ifl:property>
                 <ifl:property>
                     <key>proxyType</key>
-                    <value>sapcc</value>
+                    <value>{{connectiontype}}</value>
                 </ifl:property>
                 <ifl:property>
                     <key>componentVersion</key>
-                    <value>1.0</value>
+                    <value>1.2</value>
                 </ifl:property>
                 <ifl:property>
                     <key>reconnectDelay</key>
@@ -140,9 +144,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>scheduleKey</key>
-                    <value>&lt;row&gt;&lt;cell&gt;dayValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;monthValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;yearValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;dateType&lt;/cell&gt;&lt;cell&gt;DAILY&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;secondValue&lt;/cell&gt;&lt;cell&gt;0&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;minutesValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;hourValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;toInterval&lt;/cell&gt;&lt;cell&gt;24&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;fromInterval&lt;/cell&gt;&lt;cell&gt;0&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;OnEveryMinute&lt;/cell&gt;&lt;cell&gt;30&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;timeType&lt;/cell&gt;&lt;cell&gt;TIME_INTERVAL&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;timeZone&lt;/cell&gt;&lt;cell&gt;(
-                        UTC 0:00 ) Greenwich Mean Time(Etc/GMT)&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;triggerType&lt;/cell&gt;&lt;cell&gt;cron&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;noOfSchedules&lt;/cell&gt;&lt;cell&gt;1&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;schedule1&lt;/cell&gt;&lt;cell&gt;0+0/30+0-23+?+*+*+*&amp;amp;trigger.timeZone=Etc/GMT&lt;/cell&gt;&lt;/row&gt;
-                    </value>
+                    <value>&lt;row&gt;&lt;cell&gt;dayValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;monthValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;yearValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;dateType&lt;/cell&gt;&lt;cell&gt;DAILY&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;secondValue&lt;/cell&gt;&lt;cell&gt;0&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;minutesValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;hourValue&lt;/cell&gt;&lt;cell&gt;&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;toInterval&lt;/cell&gt;&lt;cell&gt;24&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;fromInterval&lt;/cell&gt;&lt;cell&gt;0&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;OnEveryMinute&lt;/cell&gt;&lt;cell&gt;5&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;timeType&lt;/cell&gt;&lt;cell&gt;TIME_INTERVAL&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;timeZone&lt;/cell&gt;&lt;cell&gt;( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;throwExceptionOnExpiry&lt;/cell&gt;&lt;cell&gt;true&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;second&lt;/cell&gt;&lt;cell&gt;0/10&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;minute&lt;/cell&gt;&lt;cell&gt;*&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;hour&lt;/cell&gt;&lt;cell&gt;0-24&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;day_of_month&lt;/cell&gt;&lt;cell&gt;?&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;month&lt;/cell&gt;&lt;cell&gt;*&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;dayOfWeek&lt;/cell&gt;&lt;cell&gt;*&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;year&lt;/cell&gt;&lt;cell&gt;*&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;triggerType&lt;/cell&gt;&lt;cell&gt;cron&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;noOfSchedules&lt;/cell&gt;&lt;cell&gt;1&lt;/cell&gt;&lt;/row&gt;&lt;row&gt;&lt;cell&gt;schedule1&lt;/cell&gt;&lt;cell&gt;0+0/5+0-23+?+*+*+*&amp;amp;trigger.timeZone=Etc/GMT&lt;/cell&gt;&lt;/row&gt;</value>
                 </ifl:property>
                 <ifl:property>
                     <key>TransportProtocol</key>
@@ -150,49 +152,46 @@
                 </ifl:property>
                 <ifl:property>
                     <key>cmdVariantUri</key>
-                    <value>ctype::AdapterVariant/cname::sap:FTP/tp::FTP/mp::File/direction::Sender/version::1.0.0
-                    </value>
+                    <value>ctype::AdapterVariant/cname::sap:FTP/tp::FTP/mp::File/direction::Sender/version::1.2.0</value>
                 </ifl:property>
                 <ifl:property>
                     <key>MessageProtocolVersion</key>
-                    <value>1.1.0</value>
+                    <value>1.2.0</value>
                 </ifl:property>
                 <ifl:property>
                     <key>file_lock_timeout</key>
                     <value>15</value>
                 </ifl:property>
-
             </ExtensionElements>
             <ExternalProperties>
                 <item>
-                    <name>GATEWAY</name>
-                    <value>sapserv02</value>
+                    <name>source_filename</name>
+                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='file.sourceFileName']/Value"/></value>
                 </item>
                 <item>
-                    <name>ERPHOST</name>
-                    <value>sapserv02</value>
+                    <name>location_id</name>
+                    <value></value>
                 </item>
                 <item>
-                    <name>SFTP_PASSWORD</name>
-                    <value>SAP_serv02user</value>
+                    <name>source_directory</name>
+                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='file.sourceDir' or Name='ftp.sourceDir']/Value"/></value>
                 </item>
                 <item>
-                    <name>SALES_HOST</name>
-                    <value>figaf.com</value>
+                    <name>ftp_host</name>
+                    <value><xsl:value-of select="AdapterSpecificAttribute[Name='ftp.host']/Value"/>:<xsl:value-of select="AdapterSpecificAttribute[Name='ftp.port']/Value"/></value>
                 </item>
                 <item>
-                    <name>DIRECTORY</name>
-                    <value>
-                        <xsl:value-of select="AdapterSpecificAttribute[Name='file.sourceDir']/Value"/>
-                    </value>
+                    <name>ftp_sapuser</name>
+                    <value><xsl:value-of select="CommunicationChannelID/ComponentID"/>_USER</value>
                 </item>
                 <item>
-                    <name>filename</name>
-                    <value>*.xml</value>
+                    <name>connectiontype</name>
+                    <value>sapcc</value>
                 </item>
             </ExternalProperties>
             <Notifications>
-                <ManualActionRequired>Add SFTP host to the file incl properties</ManualActionRequired>
+                <ManualActionRequired>Check FTPS connection and cloud connector settings</ManualActionRequired>
+                <Advice>Check FTP username <xsl:value-of select="CommunicationChannelID/ComponentID"/>_USER</Advice>
             </Notifications>
         </figaf:Block>
     </xsl:template>

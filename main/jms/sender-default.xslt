@@ -1,13 +1,19 @@
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:ns2="http://sap.com/xi/BASIS" xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" >
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ns2="http://sap.com/xi/BASIS"
+                xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd">
     <xsl:output indent="yes"/>
+
+    <xsl:param name="iflowTechnicalName"/>
+    <xsl:param name="iflowDisplayedName"/>
+    <xsl:param name="packageTechnicalName"/>
+    <xsl:param name="packageDisplayedName"/>
 
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
             <Name>AMQP</Name>
             <ExtensionElements>
-                 <ifl:property>
+                <ifl:property>
                     <key>Description</key>
-                    <value />
+                    <value/>
                 </ifl:property>
                 <ifl:property>
                     <key>ComponentNS</key>
@@ -15,7 +21,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>location_id</key>
-                    <value />
+                    <value/>
                 </ifl:property>
                 <ifl:property>
                     <key>Name</key>
@@ -31,7 +37,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>proxyPort</key>
-                    <value />
+                    <value/>
                 </ifl:property>
                 <ifl:property>
                     <key>destinationName</key>
@@ -43,7 +49,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>alias</key>
-                    <value />
+                    <value/>
                 </ifl:property>
                 <ifl:property>
                     <key>MessageProtocol</key>
@@ -79,7 +85,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>proxyHost</key>
-                    <value />
+                    <value/>
                 </ifl:property>
                 <ifl:property>
                     <key>connectWithTLS</key>
@@ -125,23 +131,21 @@
                     <key>MessageProtocolVersion</key>
                     <value>1.7.0</value>
                 </ifl:property>
- 
             </ExtensionElements>
             <ExternalProperties>
                 <item>
                     <name>AMQP_USER</name>
                     <value>AMQP_USER</value>
                 </item>
-						    <item>
+                <item>
                     <name>AMQP_HOST</name>
                     <value><xsl:value-of select="//AdapterSpecificAttribute[Name='WSMQServer']/Value"/></value>
                 </item>
-		
-				    <item>
+                <item>
                     <name>AMQP_PORT</name>
                     <value><xsl:value-of select="//AdapterSpecificAttribute[Name='WSMQPort']/Value"/></value>
                 </item>
-						    <item>
+                <item>
                     <name>AMQP_QUEUE</name>
                     <value><xsl:value-of select="//AdapterSpecificAttribute[Name='WSMQQueue']/Value"/></value>
                 </item>
@@ -149,14 +153,6 @@
             <Notifications>
                 <ManualActionRequired>Check the AMQP setup</ManualActionRequired>
             </Notifications>
-
-
-
         </figaf:Block>
-
-
-
     </xsl:template>
-
-
 </xsl:stylesheet>
