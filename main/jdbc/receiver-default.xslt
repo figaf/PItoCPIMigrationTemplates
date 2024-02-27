@@ -1,11 +1,16 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:ns2="http://sap.com/xi/BASIS" xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" >
     <xsl:output indent="yes"/>
 
+    <xsl:param name="iflowTechnicalName"/>
+    <xsl:param name="iflowDisplayedName"/>
+    <xsl:param name="packageTechnicalName"/>
+    <xsl:param name="packageDisplayedName"/>
+
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
             <Name>JDBC</Name>
             <ExtensionElements>
-      <ifl:property>
+                <ifl:property>
                     <key>queryTimeout</key>
                     <value>3</value>
                 </ifl:property>
@@ -89,26 +94,16 @@
                     <key>direction</key>
                     <value>Receiver</value>
                 </ifl:property>
-
             </ExtensionElements>
             <ExternalProperties>
                 <item>
                     <name>JDBCDataSource</name>
                     <value><xsl:value-of select="CommunicationChannelID/ComponentID"/>_JDBC</value>
                 </item>
-
             </ExternalProperties>
             <Notifications>
                 <Advice>Check the JDBC Datastore <xsl:value-of select="CommunicationChannelID/ComponentID"/>_JDBC</Advice>
             </Notifications>
-
-
-
         </figaf:Block>
-
-
-
     </xsl:template>
-
-
 </xsl:stylesheet>

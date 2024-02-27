@@ -1,6 +1,11 @@
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"  xmlns:ns2="http://sap.com/xi/BASIS" xmlns:figaf="http://figaf.com/cpi" xmlns:ifl="http:///com.sap.ifl.model/Ifl.xsd" >
     <xsl:output indent="yes"/>
 
+    <xsl:param name="iflowTechnicalName"/>
+    <xsl:param name="iflowDisplayedName"/>
+    <xsl:param name="packageTechnicalName"/>
+    <xsl:param name="packageDisplayedName"/>
+
     <xsl:template match="ns2:CommunicationChannel">
         <figaf:Block>
             <Name>HTTP</Name>
@@ -27,7 +32,7 @@
                 </ifl:property>
                 <ifl:property>
                     <key>urlPath</key>
-                    <value>/generatedurl</value>
+                    <value>/<xsl:value-of select="$iflowTechnicalName"/></value>
                 </ifl:property>
                 <ifl:property>
                     <key>Name</key>
@@ -85,7 +90,6 @@
                     <key>clientCertificates</key>
                     <value/>
                 </ifl:property>
-
             </ExtensionElements>
             <ExternalProperties>
 
@@ -93,14 +97,6 @@
             <Notifications>
 
             </Notifications>
-
-
-
         </figaf:Block>
-
-
-
     </xsl:template>
-
-
 </xsl:stylesheet>
